@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ed1 = findViewById(R.id.emailID);
         ed2 = findViewById(R.id.password);
 
-        if(ed1.getText().toString().equals("Abhishek") && ed2.getText().toString().equals("12345")) {
+        if(ed1.getText().toString().equals("Abhi") && ed2.getText().toString().equals("12345")) {
             Intent i = new Intent(MainActivity.this, Main2Activity.class);
             startActivity(i);
             Toast.makeText(MainActivity.this, "Logged In.", Toast.LENGTH_SHORT).show();
