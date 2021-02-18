@@ -20,9 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void Register(View v){
 
-        ed1 = findViewById(R.id.emailID);
-        ed2 = findViewById(R.id.password);
-
         if(ed1.getText().toString().equals("Abhishek") && ed2.getText().toString().equals("1234")) {
             Intent i = new Intent(RegisterActivity.this, Main2Activity.class);
             startActivity(i);
