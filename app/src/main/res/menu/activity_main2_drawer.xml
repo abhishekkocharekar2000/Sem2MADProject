@@ -6,23 +6,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_baseline_create_new_folder_24"
+            android:title="New Project" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="Open Project"/>
+        <item
+            android:id="@+id/nav_send"
             android:icon="@drawable/ic_upload2"
-            android:title="New" />
+            android:title="Upload"/>
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Account"/>
+
 
     </group>
-    <item android:title="Account">
-        <menu>
-            <item
-                android:id="@+id/nav_tools"
-                android:icon="@android:drawable/ic_menu_set_as"
-                android:title="Logout"/>
 
-        </menu>
-    </item>
 
 
 </menu>

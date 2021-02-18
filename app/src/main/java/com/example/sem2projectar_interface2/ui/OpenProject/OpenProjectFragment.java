@@ -1,4 +1,4 @@
-package com.example.sem2projectar_interface2.ui.share;
+package com.example.sem2projectar_interface2.ui.OpenProject;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,16 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sem2projectar_interface2.R;
 
-public class ShareFragment extends Fragment {
+public class OpenProjectFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private OpenProjectViewModel openProjectViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
+        openProjectViewModel =
+                ViewModelProviders.of(this).get(OpenProjectViewModel.class);
         View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

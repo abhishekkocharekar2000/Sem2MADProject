@@ -1,4 +1,4 @@
-package com.example.sem2projectar_interface2.ui.gallery;
+package com.example.sem2projectar_interface2.ui.NewProject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,15 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.sem2projectar_interface2.CameraActivity;
 import com.example.sem2projectar_interface2.R;
 
-public class GalleryFragment extends Fragment {
+public class NewProjectFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private NewProjectViewModel galleryViewModel;
     private Button b;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+                ViewModelProviders.of(this).get(NewProjectViewModel.class);
         View root = inflater.inflate(R.layout.new_project, container, false);
         b = root.findViewById(R.id.button4);
         b.setOnClickListener(new View.OnClickListener() {
