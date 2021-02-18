@@ -1,6 +1,5 @@
 package com.example.sem2projectar_interface2.ui.Account;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,15 +20,12 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.Glide;
 import com.example.sem2projectar_interface2.MainActivity;
 import com.example.sem2projectar_interface2.R;
-import com.example.sem2projectar_interface2.ui.Upload.UploadViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-import java.util.concurrent.Executor;
 
 public class AccountFragment extends Fragment {
 
@@ -41,14 +37,13 @@ public class AccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_upload, container, false);
+        View root = inflater.inflate(R.layout.fragment_account, container, false);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
         name = root.findViewById(R.id.account_name);
-        id = root.findViewById(R.id.account_id);
         email = root.findViewById(R.id.account_email);
         logoutButton = root.findViewById(R.id.account_logout);
         deleteAccountButton = root.findViewById(R.id.account_delete);
@@ -98,11 +93,9 @@ public class AccountFragment extends Fragment {
         if (acct != null) {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
-            String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
             name.setText(personName);
             email.setText(personEmail);
-            id.setText(personId);
             Glide.with(getActivity()).load(String.valueOf(personPhoto)).into(display);
 
 
