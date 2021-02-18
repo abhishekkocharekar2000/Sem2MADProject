@@ -19,23 +19,24 @@ import android.widget.Toast;
 public class BrowseModels extends AppCompatActivity {
 
     ListView listView;
-    String mTitle[] = {"Chair", "Whatsapp", "Twitter", "Instagram", "Youtube"};
-    String mDescription[] = {"Wooden Chair", "Whatsapp Description", "Twitter Description", "Instagram Description", "Youtube Description"};
-    int images[] = {R.drawable.woodenchair, R.drawable.woodenchair, R.drawable.woodenchair, R.drawable.woodenchair, R.drawable.woodenchair};
+    String mTitle[] = {"Bed","Chair","Couch","Book Shelf","Corner Table","Couch","Drums","Piano","Bed","Desk","Couch","Study Table","Corner Table",
+    "Bench","Piano"};
+    String mDescription[] = {"Bed with side tables", "Chair with arm rest","Black Couch","Wooden Book Shelf","Corner table with lamp",
+    "Couch with leg rest","Blue and yellow drum set","Black Piano","Basic wooden bed","Office desk","Red Couch",
+            "Study table with three drawers","Vintage corner table","Wooden bench","Wooden Piano"};
+    int images[] = {R.drawable.bedwithsidetables, R.drawable.armrestchair,R.drawable.blackcouch,R.drawable.bookshelf,
+    R.drawable.cornertable,R.drawable.couchwithlegrest,R.drawable.drums,R.drawable.blackpiano,R.drawable.bed,R.drawable.officedesk,
+    R.drawable.redcouch,R.drawable.studytable,R.drawable.vintagecornertable,R.drawable.woodenchair,R.drawable.woodenpiano};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_models);
         listView = findViewById(R.id.listView);
-        // now create an adapter class
 
         MyAdapter adapter = new MyAdapter(this, mTitle, mDescription, images);
         listView.setAdapter(adapter);
-        // there is my mistake...
-        // now again check this..
 
-        // now set item click on list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
