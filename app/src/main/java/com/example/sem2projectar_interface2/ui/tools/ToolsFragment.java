@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -16,7 +17,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sem2projectar_interface2.CameraActivity;
 import com.example.sem2projectar_interface2.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -37,13 +40,7 @@ public class ToolsFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    // ...
-                    case R.id.text_tools:
-                        signOut();
-                        break;
-                    // ...
-                }
+                signOut();
             }
         });
         return root;
@@ -55,7 +52,7 @@ public class ToolsFragment extends Fragment {
                 .addOnCompleteListener((Executor) this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // ...
+                        Toast.makeText(getContext(),"Signout Successful",Toast.LENGTH_SHORT).show();
                     }
                 });
     }
