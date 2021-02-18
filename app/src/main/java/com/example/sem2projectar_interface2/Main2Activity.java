@@ -2,6 +2,7 @@ package com.example.sem2projectar_interface2;
 
 import android.os.Bundle;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -23,10 +24,15 @@ import android.view.Menu;
 
 public class Main2Activity extends AppCompatActivity {
 
+    DrawerLayout drawerLayout;
+
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -43,8 +49,9 @@ public class Main2Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-    }
 
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -58,5 +65,6 @@ public class Main2Activity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 
 }
