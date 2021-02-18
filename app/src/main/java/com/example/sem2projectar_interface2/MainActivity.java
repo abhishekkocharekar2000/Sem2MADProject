@@ -21,18 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void Login(View v){
 
-        ed1 = findViewById(R.id.emailID);
-        ed2 = findViewById(R.id.password);
-
-        if(ed1.getText().toString().equals("A") && ed2.getText().toString().equals("1")) {
-            Intent i = new Intent(MainActivity.this, Main2Activity.class);
-            startActivity(i);
-            Toast.makeText(MainActivity.this, "Logged In.", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(MainActivity.this, "Incorrect Id or Password", Toast.LENGTH_SHORT).show();
-        }
-
 
     }
 
