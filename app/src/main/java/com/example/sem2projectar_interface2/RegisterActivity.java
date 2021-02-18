@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    EditText ed1,ed2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
     }
-
-
 }
