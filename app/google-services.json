@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478931183161",
+    "project_id": "ar-project-1613631636102",
+    "storage_bucket": "ar-project-1613631636102.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478931183161:android:7b053354b75aa4f8edcfe8",
+        "android_client_info": {
+          "package_name": "com.example.sem2projectar_interface2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478931183161-adqo4jrf1kbk93pmeo952hb2jrmmg9jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpJZvlxTe3PJccNwpysvB3TG4PaGzTntI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478931183161-adqo4jrf1kbk93pmeo952hb2jrmmg9jh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

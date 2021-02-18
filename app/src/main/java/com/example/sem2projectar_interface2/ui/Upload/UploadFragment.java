@@ -4,32 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sem2projectar_interface2.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 public class UploadFragment extends Fragment {
 
     private UploadViewModel uploadViewModel;
+    private GoogleSignInClient mGoogleSignInClient;
+    Button logoutButton, deleteAccountButton;
+    TextView name, id, email;
+    ImageView display;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        uploadViewModel =
-                ViewModelProviders.of(this).get(UploadViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        uploadViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        uploadViewModel = ViewModelProviders.of(this).get(UploadViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_account, container, false);
+
         return root;
     }
 }

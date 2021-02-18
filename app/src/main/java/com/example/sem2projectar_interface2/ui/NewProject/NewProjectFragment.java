@@ -23,7 +23,7 @@ public class NewProjectFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(NewProjectViewModel.class);
-        View root = inflater.inflate(R.layout.new_project, container, false);
+        View root = inflater.inflate(R.layout.fragment_new_project, container, false);
         b = root.findViewById(R.id.button4);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
