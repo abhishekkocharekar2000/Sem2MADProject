@@ -44,14 +44,14 @@ public class BrowseModels extends AppCompatActivity {
             }
         });
     }
-    class MyAdapter extends ArrayAdapter<String> {
+    public class MyAdapter extends ArrayAdapter<String> {
 
         Context context;
         String rTitle[];
         String rDescription[];
         int rImgs[];
 
-        MyAdapter (Context c, String title[], String description[], int imgs[]) {
+        public MyAdapter(Context c, String title[], String description[], int imgs[]) {
             super(c, R.layout.row, R.id.textView1, title);
             this.context = c;
             this.rTitle = title;
@@ -80,4 +80,6 @@ public class BrowseModels extends AppCompatActivity {
             return row;
         }
     }
+
+
 }
