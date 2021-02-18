@@ -20,16 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void Register(View v){
 
-        if(ed1.getText().toString().equals("Abhishek") && ed2.getText().toString().equals("1234")) {
-            Intent i = new Intent(RegisterActivity.this, Main2Activity.class);
-            startActivity(i);
-            Toast.makeText(RegisterActivity.this, "Logged In.", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(RegisterActivity.this, "Incorrect Id or Password", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
 }
