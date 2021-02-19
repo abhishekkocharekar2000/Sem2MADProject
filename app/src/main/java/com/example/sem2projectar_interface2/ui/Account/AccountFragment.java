@@ -96,8 +96,12 @@ public class AccountFragment extends Fragment {
             Uri personPhoto = acct.getPhotoUrl();
             name.setText(personName);
             email.setText(personEmail);
-            Glide.with(getActivity()).load(String.valueOf(personPhoto)).into(display);
-
+            if (personPhoto != null) {
+                Glide.with(getActivity()).load(String.valueOf(personPhoto)).into(display);
+            }
+            else{
+                display.setBackgroundResource(R.drawable.defaul);
+            }
 
         }
         return root;
