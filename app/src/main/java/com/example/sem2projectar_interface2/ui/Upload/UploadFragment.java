@@ -25,7 +25,7 @@ public class UploadFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         uploadViewModel = ViewModelProviders.of(this).get(UploadViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        View root = inflater.inflate(R.layout.fragment_upload, container, false);
 
         return root;
     }

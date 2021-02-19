@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
                 Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Welcome "+ personName,Toast.LENGTH_SHORT).show();
             }
 
             startActivity(new Intent(MainActivity.this, Main2Activity.class));
