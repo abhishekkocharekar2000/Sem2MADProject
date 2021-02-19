@@ -1,4 +1,4 @@
-package com.example.sem2projectar_interface2.ui.Home;
+package com.example.sem2projectar_interface2.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,22 +17,13 @@ import com.example.sem2projectar_interface2.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    Button b;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        b = root.findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivity(i);
-            }
-        });
         return root;
     }
 }

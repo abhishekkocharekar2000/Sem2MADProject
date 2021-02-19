@@ -1,4 +1,4 @@
-package com.example.sem2projectar_interface2.ui.Home;
+package com.example.sem2projectar_interface2.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
