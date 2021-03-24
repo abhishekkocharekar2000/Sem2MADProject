@@ -29,14 +29,14 @@
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
         app:srcCompat="@drawable/ic_capture_button" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <fragment
+        android:id="@+id/arFragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

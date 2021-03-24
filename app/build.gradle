@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.ar.sceneform.plugin'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
     defaultConfig {
         applicationId "com.example.sem2projectar_interface2"
         minSdkVersion 24
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -19,15 +20,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
 
     implementation 'com.google.firebase:firebase-analytics'
-    implementation ("com.github.bumptech.glide:glide:4.11.0") {
+    implementation ("com.github.bumptech.glide:glide:4.12.0") {
         exclude group: "com.android.support"
     }
-    implementation "com.android.support:support-fragment:26.1.0"
+    implementation 'com.google.ar:core:1.23.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
+    implementation 'com.google.ar.sceneform:core:1.17.1'
+    implementation "com.android.support:support-fragment:30.0.0"
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -35,11 +43,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.3'
-    implementation 'androidx.navigation:navigation-ui:2.3.3'
+    implementation 'androidx.navigation:navigation-fragment:2.3.4'
+    implementation 'androidx.navigation:navigation-ui:2.3.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.firebase:firebase-storage:19.2.1'
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -47,6 +55,92 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
     implementation 'com.google.firebase:firebase-auth'
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
-    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
 
 }
+
+sceneform.asset('sampledata/bedwithsidetables.obj',
+        'default',
+        'sampledata/bedwithsidetables.sfa',
+        'src/main/assets/bedwithsidetables'
+)
+
+sceneform.asset('sampledata/armrestchair.obj',
+        'default',
+        'sampledata/armrestchair.sfa',
+        'src/main/assets/armrestchair'
+)
+
+sceneform.asset('sampledata/blackcouch.obj',
+        'default',
+        'sampledata/blackcouch.sfa',
+        'src/main/assets/blackcouch'
+)
+
+sceneform.asset('sampledata/bookshelf.obj',
+        'default',
+        'sampledata/bookshelf.sfa',
+        'src/main/assets/bookshelf'
+)
+
+sceneform.asset('sampledata/couchwithlegrest.obj',
+        'default',
+        'sampledata/couchwithlegrest.sfa',
+        'src/main/assets/couchwithlegrest'
+)
+
+sceneform.asset('sampledata/drums.obj',
+        'default',
+        'sampledata/drums.sfa',
+        'src/main/assets/drums'
+)
+
+sceneform.asset('sampledata/blackpiano.obj',
+        'default',
+        'sampledata/blackpiano.sfa',
+        'src/main/assets/blackpiano'
+)
+
+sceneform.asset('sampledata/bed.obj',
+        'default',
+        'sampledata/bed.sfa',
+        'src/main/assets/bed'
+)
+
+sceneform.asset('sampledata/officedesk.obj',
+        'default',
+        'sampledata/officedesk.sfa',
+        'src/main/assets/officedesk'
+)
+
+sceneform.asset('sampledata/redcouch.obj',
+        'default',
+        'sampledata/redcouch.sfa',
+        'src/main/assets/redcouch'
+)
+
+sceneform.asset('sampledata/studytable.obj',
+        'default',
+        'sampledata/studytable.sfa',
+        'src/main/assets/studytable'
+)
+
+sceneform.asset('sampledata/vintagecornertable.obj',
+        'default',
+        'sampledata/vintagecornertable.sfa',
+        'src/main/assets/vintagecornertable'
+)
+
+sceneform.asset('sampledata/woodenchair.obj',
+        'default',
+        'sampledata/woodenchair.sfa',
+        'src/main/assets/woodenchair'
+)
+
+sceneform.asset('sampledata/woodenpiano.obj',
+        'default',
+        'sampledata/woodenpiano.sfa',
+        'src/main/assets/woodenpiano'
+)
+
+
