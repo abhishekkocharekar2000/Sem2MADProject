@@ -58,7 +58,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Sign in with Google"
+        android:text="Login "
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
