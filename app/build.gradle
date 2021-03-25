@@ -33,8 +33,8 @@ dependencies {
         exclude group: "com.android.support"
     }
     implementation 'com.google.ar:core:1.23.0'
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
-    implementation 'com.google.ar.sceneform:core:1.17.1'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.15.0'
+    implementation 'com.google.ar.sceneform:core:1.15.0'
     implementation "com.android.support:support-fragment:30.0.0"
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
@@ -142,5 +142,9 @@ sceneform.asset('sampledata/woodenpiano.obj',
         'sampledata/woodenpiano.sfa',
         'src/main/assets/woodenpiano'
 )
+
+
+
+
 
 
