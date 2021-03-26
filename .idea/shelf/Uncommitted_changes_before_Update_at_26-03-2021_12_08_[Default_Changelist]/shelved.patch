@@ -1,0 +1,419 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.sem2projectar_interface2\">\r\n\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\r\n    <uses-permission android:name=\"android.permission.WAKE_LOCK\" />\r\n    <uses-permission android:name=\"android.permission.CAMERA\" />\r\n    <uses-feature android:name=\"android.hardware.camera\" />\r\n    <uses-feature android:name=\"android.hardware.camera.autofocus\" />\r\n    <uses-feature\r\n        android:name=\"android.hardware.camera.ar\"\r\n        android:required=\"true\" />\r\n\r\n    <application\r\n        android:fullBackupContent=\"true\"\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".BrowseModels\"></activity>\r\n        <activity android:name=\".CameraActivity\" android:theme=\"@style/AppTheme2\"/>\r\n        <activity\r\n            android:name=\".Main2Activity\"\r\n            android:label=\"@string/title_activity_main2\"\r\n            android:parentActivityName=\".MainActivity\"\r\n            android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".RegisterActivity\" />\r\n        <activity android:name=\".MainActivity\" android:theme=\"@style/AppTheme2\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n\r\n        </activity>\r\n        <meta-data android:name=\"com.facebook.sdk.ApplicationId\"\r\n            android:value=\"@string/facebook_application_id\"/>\r\n        <meta-data\r\n            android:name=\"com.google.ar.core\"\r\n            android:value=\"required\" />\r\n\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision d75e678247b4ebf5b5ae23e75835ceb983ab167e)
++++ app/src/main/AndroidManifest.xml	(date 1616707423531)
+@@ -6,6 +6,8 @@
+     <uses-permission android:name="android.permission.INTERNET"/>
+     <uses-permission android:name="android.permission.WAKE_LOCK" />
+     <uses-permission android:name="android.permission.CAMERA" />
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+     <uses-feature android:name="android.hardware.camera" />
+     <uses-feature android:name="android.hardware.camera.autofocus" />
+     <uses-feature
+@@ -13,6 +15,7 @@
+         android:required="true" />
+ 
+     <application
++        android:requestLegacyExternalStorage="true"
+         android:fullBackupContent="true"
+         android:allowBackup="true"
+         android:icon="@mipmap/ic_launcher"
+Index: app/src/main/res/layout/activity_camera.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".CameraActivity\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/arFragment\"\r\n        android:name=\"com.google.ar.sceneform.ux.ArFragment\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/horizontalScrollView\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <HorizontalScrollView\r\n        android:id=\"@+id/horizontalScrollView\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/arFragment\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/img1\"\r\n                android:layout_width=\"100dp\"\r\n                android:layout_height=\"100dp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                android:layout_marginRight=\"20dp\"\r\n                android:src=\"@drawable/bedwithsidetables\">\r\n\r\n            </ImageView>\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"center\"\r\n                android:layout_marginBottom=\"10dp\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Bed\"\r\n                android:textColor=\"#000\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\" />\r\n\r\n        </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img2\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/armrestchair\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Armrest Chair\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img3\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/blackcouch\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Black Couch\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img4\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/bookshelf\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Bookshelf\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img5\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/couchwithlegrest\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Leg rest Couch\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img6\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/drums\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Drums\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img7\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/blackpiano\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Black Piano\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img8\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/bed\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Basic Bed\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img9\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/officedesk\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Office Desk\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img10\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/redcouch\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Red Couch\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img11\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/studytable\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Study Table\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img12\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/vintagecornertable\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Corner Table\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img13\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/woodenchair\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Bench\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/img14\"\r\n                    android:layout_width=\"100dp\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginRight=\"20dp\"\r\n                    android:src=\"@drawable/woodenpiano\">\r\n\r\n                </ImageView>\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Wooden Piano\"\r\n                    android:textColor=\"#000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </LinearLayout>\r\n    </HorizontalScrollView>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_camera.xml	(revision d75e678247b4ebf5b5ae23e75835ceb983ab167e)
++++ app/src/main/res/layout/activity_camera.xml	(date 1616707341451)
+@@ -11,7 +11,7 @@
+         android:name="com.google.ar.sceneform.ux.ArFragment"
+         android:layout_width="0dp"
+         android:layout_height="0dp"
+-        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+@@ -23,7 +23,7 @@
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/arFragment">
++        android:background="@color/Grey">
+ 
+         <LinearLayout
+             android:layout_width="wrap_content"
+@@ -426,4 +426,15 @@
+         </LinearLayout>
+     </HorizontalScrollView>
+ 
++    <com.google.android.material.floatingactionbutton.FloatingActionButton
++        android:id="@+id/floatingActionButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="16dp"
++        android:clickable="true"
++        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:srcCompat="@drawable/ic_upload" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/sem2projectar_interface2/CameraActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.sem2projectar_interface2;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.FrameLayout;\r\nimport android.hardware.Camera;\r\nimport android.widget.ImageView;\r\n\r\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\r\nimport com.google.ar.core.Anchor;\r\nimport com.google.ar.sceneform.AnchorNode;\r\nimport com.google.ar.sceneform.rendering.ModelRenderable;\r\nimport com.google.ar.sceneform.ux.ArFragment;\r\nimport com.google.ar.sceneform.ux.TransformableNode;\r\n\r\npublic class CameraActivity extends AppCompatActivity {\r\n\r\n    public ArFragment arFragment;\r\n    ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14;\r\n    final String t1 = \"bedwithsidetables.sfb\";\r\n    final String t2 = \"armrestchair.sfb\";\r\n    final String t3 = \"blackcouch.sfb\";\r\n    final String t4 = \"bookshelf.sfb\";\r\n    final String t5 = \"couchwithlegrest.sfb\";\r\n    final String t6 = \"drums.sfb\";\r\n    final String t7 = \"blackpiano.sfb\";\r\n    final String t8 = \"bed.sfb\";\r\n    final String t9 = \"officedesk.sfb\";\r\n    final String t10 = \"redcouch.sfb\";\r\n    final String t11 = \"studytable.sfb\";\r\n    final String t12 = \"vintagecornertable.sfb\";\r\n    final String t13 = \"woodenchair.sfb\";\r\n    final String t14 = \"woodenpiano.sfb\";\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_camera);\r\n\r\n        arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);\r\n\r\n        Intent i = getIntent();\r\n        String t = i.getStringExtra(BrowseModels.EXTRA_TEXT);\r\n\r\n        img1 = findViewById(R.id.img1);\r\n        img1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t1);\r\n            }\r\n        });\r\n\r\n        img2 = findViewById(R.id.img2);\r\n        img2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t2);\r\n            }\r\n        });\r\n\r\n        img3 = findViewById(R.id.img3);\r\n        img3.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t3);\r\n            }\r\n        });\r\n\r\n        img4 = findViewById(R.id.img4);\r\n        img4.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t4);\r\n            }\r\n        });\r\n\r\n        img5 = findViewById(R.id.img5);\r\n        img5.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t5);\r\n            }\r\n        });\r\n\r\n        img6 = findViewById(R.id.img6);\r\n        img6.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t6);\r\n            }\r\n        });\r\n\r\n        img7 = findViewById(R.id.img7);\r\n        img7.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t7);\r\n            }\r\n        });\r\n\r\n        img8 = findViewById(R.id.img8);\r\n        img8.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t8);\r\n            }\r\n        });\r\n\r\n        img9 = findViewById(R.id.img9);\r\n        img9.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t9);\r\n            }\r\n        });\r\n\r\n        img10 = findViewById(R.id.img10);\r\n        img10.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t10);\r\n            }\r\n        });\r\n\r\n        img11 = findViewById(R.id.img11);\r\n        img11.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t11);\r\n            }\r\n        });\r\n\r\n        img12 = findViewById(R.id.img12);\r\n        img12.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t12);\r\n            }\r\n        });\r\n\r\n        img13 = findViewById(R.id.img13);\r\n        img13.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t13);\r\n            }\r\n        });\r\n\r\n        img14 = findViewById(R.id.img14);\r\n        img14.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AR(t14);\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n    public void AR(String t){\r\n        arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {\r\n\r\n            Anchor anchor = hitResult.createAnchor();\r\n\r\n            ModelRenderable.builder()\r\n                    .setSource(this, Uri.parse(t))\r\n                    .build()\r\n                    .thenAccept(modelRenderable -> addModelToScene(anchor,modelRenderable));\r\n        });\r\n    }\r\n    private void addModelToScene(Anchor anchor, ModelRenderable modelRenderable) {\r\n\r\n        AnchorNode node = new AnchorNode(anchor);\r\n        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());\r\n        transformableNode.setParent(node);\r\n        transformableNode.setRenderable(modelRenderable);\r\n\r\n        arFragment.getArSceneView().getScene().addChild(node);\r\n        transformableNode.select();\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sem2projectar_interface2/CameraActivity.java	(revision d75e678247b4ebf5b5ae23e75835ceb983ab167e)
++++ app/src/main/java/com/example/sem2projectar_interface2/CameraActivity.java	(date 1616739975439)
+@@ -1,15 +1,25 @@
+ package com.example.sem2projectar_interface2;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.app.ActivityCompat;
+ 
++import android.Manifest;
++import android.app.Activity;
+ import android.content.Intent;
++import android.content.pm.PackageManager;
++import android.graphics.Bitmap;
++import android.media.CamcorderProfile;
+ import android.net.Uri;
+ import android.os.Bundle;
++import android.os.Environment;
+ import android.view.View;
+ import android.widget.FrameLayout;
+ import android.hardware.Camera;
++import android.widget.HorizontalScrollView;
+ import android.widget.ImageView;
++import android.widget.Toast;
+ 
++import com.example.sem2projectar_interface2.ui.Screenshot;
+ import com.google.android.material.floatingactionbutton.FloatingActionButton;
+ import com.google.ar.core.Anchor;
+ import com.google.ar.sceneform.AnchorNode;
+@@ -17,9 +27,21 @@
+ import com.google.ar.sceneform.ux.ArFragment;
+ import com.google.ar.sceneform.ux.TransformableNode;
+ 
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.text.DateFormat;
++import java.util.Date;
++
++import static java.text.DateFormat.getDateInstance;
++
+ public class CameraActivity extends AppCompatActivity {
+ 
+     public ArFragment arFragment;
++    private Screenshot s;
++    HorizontalScrollView h;
++    FloatingActionButton f;
+     ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14;
+     final String t1 = "bedwithsidetables.sfb";
+     final String t2 = "armrestchair.sfb";
+@@ -40,12 +62,37 @@
+     public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_camera);
++        h = findViewById(R.id.horizontalScrollView);
++        f = findViewById(R.id.floatingActionButton);
+ 
+         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
+ 
+         Intent i = getIntent();
+         String t = i.getStringExtra(BrowseModels.EXTRA_TEXT);
+ 
++        //verifyStoragePermission(this);
++        Toast.makeText(CameraActivity.this, "Started Recording", Toast.LENGTH_SHORT).show();
++
++        f.setOnClickListener(view -> {
++            if(s == null){
++                s = new Screenshot();
++                s.setSceneView(arFragment.getArSceneView());
++
++                int orientation = getResources().getConfiguration().orientation;
++
++                s.setVideoQuality(CamcorderProfile.QUALITY_HIGH, orientation);
++            }
++
++            boolean isRecording = s.onToggleRecord();
++
++            if(isRecording)
++                Toast.makeText(CameraActivity.this, "Started Recording", Toast.LENGTH_SHORT).show();
++            else
++                Toast.makeText(CameraActivity.this, "Stopped Recording", Toast.LENGTH_SHORT).show();
++
++
++        });
++
+         img1 = findViewById(R.id.img1);
+         img1.setOnClickListener(new View.OnClickListener() {
+             @Override
+@@ -155,11 +202,24 @@
+             @Override
+             public void onClick(View view) {
+                 AR(t14);
++
+             }
+         });
+ 
+ 
+     }
++
++    @Override
++    public void onResume(){
++        super.onResume();
++
++        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
++                != PackageManager.PERMISSION_GRANTED)
++            ActivityCompat.requestPermissions(this,
++                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
++
++    }
++
+     public void AR(String t){
+         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
+ 
+@@ -180,6 +240,8 @@
+ 
+         arFragment.getArSceneView().getScene().addChild(node);
+         transformableNode.select();
++
++
+     }
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/sem2projectar_interface2/ui/Screenshot.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sem2projectar_interface2/ui/Screenshot.java	(date 1616740070203)
++++ app/src/main/java/com/example/sem2projectar_interface2/ui/Screenshot.java	(date 1616740070203)
+@@ -0,0 +1,191 @@
++package com.example.sem2projectar_interface2.ui;
++
++import android.content.res.Configuration;
++import android.media.CamcorderProfile;
++import android.media.MediaRecorder;
++import android.os.Environment;
++import android.util.Log;
++import android.util.Size;
++import android.view.Surface;
++import com.google.ar.sceneform.SceneView;
++import java.io.File;
++import java.io.IOException;
++
++/**
++ * Video Recorder class handles recording the contents of a SceneView. It uses MediaRecorder to
++ * encode the video. The quality settings can be set explicitly or simply use the CamcorderProfile
++ * class to select a predefined set of parameters.
++ */
++public class Screenshot {
++    private static final String TAG = "VideoRecorder";
++    private static final int DEFAULT_BITRATE = 10000000;
++    private static final int DEFAULT_FRAMERATE = 30;
++
++    // recordingVideoFlag is true when the media recorder is capturing video.
++    private boolean recordingVideoFlag;
++
++    private MediaRecorder mediaRecorder;
++
++    private Size videoSize;
++
++    private SceneView sceneView;
++    private int videoCodec;
++    private File videoDirectory;
++    private String videoBaseName;
++    private File videoPath;
++    private int bitRate = DEFAULT_BITRATE;
++    private int frameRate = DEFAULT_FRAMERATE;
++    private Surface encoderSurface;
++
++    private static final int[] FALLBACK_QUALITY_LEVELS = {
++            CamcorderProfile.QUALITY_HIGH,
++            CamcorderProfile.QUALITY_2160P,
++            CamcorderProfile.QUALITY_1080P,
++            CamcorderProfile.QUALITY_720P,
++            CamcorderProfile.QUALITY_480P
++    };
++
++    public void VideoRecorder() {
++        recordingVideoFlag = false;
++    }
++
++    public File getVideoPath() {
++        return videoPath;
++    }
++
++    public void setBitRate(int bitRate) {
++        this.bitRate = bitRate;
++    }
++
++    public void setFrameRate(int frameRate) {
++        this.frameRate = frameRate;
++    }
++
++    public void setSceneView(SceneView sceneView) {
++        this.sceneView = sceneView;
++    }
++
++    /**
++     * Toggles the state of video recording.
++     *
++     * @return true if recording is now active.
++     */
++    public boolean onToggleRecord() {
++        if (recordingVideoFlag) {
++            stopRecordingVideo();
++        } else {
++            startRecordingVideo();
++        }
++        return recordingVideoFlag;
++    }
++
++    private void startRecordingVideo() {
++        if (mediaRecorder == null) {
++            mediaRecorder = new MediaRecorder();
++        }
++
++        try {
++            buildFilename();
++            setUpMediaRecorder();
++        } catch (IOException e) {
++            Log.e(TAG, "Exception setting up recorder", e);
++            return;
++        }
++
++        // Set up Surface for the MediaRecorder
++        encoderSurface = mediaRecorder.getSurface();
++
++        sceneView.startMirroringToSurface(
++                encoderSurface, 0, 0, videoSize.getWidth(), videoSize.getHeight());
++
++        recordingVideoFlag = true;
++    }
++
++    private void buildFilename() {
++        if (videoDirectory == null) {
++            videoDirectory =
++                    new File(
++                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
++                                    + "/MAD_PROJECT_AR");
++        }
++        if (videoBaseName == null || videoBaseName.isEmpty()) {
++            videoBaseName = "Sample";
++        }
++        videoPath =
++                new File(
++                        videoDirectory, videoBaseName + Long.toHexString(System.currentTimeMillis()) + ".mp4");
++        File dir = videoPath.getParentFile();
++        if (!dir.exists()) {
++            dir.mkdirs();
++        }
++    }
++
++    private void stopRecordingVideo() {
++        // UI
++        recordingVideoFlag = false;
++
++        if (encoderSurface != null) {
++            sceneView.stopMirroringToSurface(encoderSurface);
++            encoderSurface = null;
++        }
++        // Stop recording
++        mediaRecorder.stop();
++        mediaRecorder.reset();
++    }
++
++    private void setUpMediaRecorder() throws IOException {
++
++        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
++        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
++
++        mediaRecorder.setOutputFile(videoPath.getAbsolutePath());
++        mediaRecorder.setVideoEncodingBitRate(bitRate);
++        mediaRecorder.setVideoFrameRate(frameRate);
++        mediaRecorder.setVideoSize(videoSize.getWidth(), videoSize.getHeight());
++        mediaRecorder.setVideoEncoder(videoCodec);
++
++        mediaRecorder.prepare();
++
++        try {
++            mediaRecorder.start();
++        } catch (IllegalStateException e) {
++            Log.e(TAG, "Exception starting capture: " + e.getMessage(), e);
++        }
++    }
++
++    public void setVideoSize(int width, int height) {
++        videoSize = new Size(width, height);
++    }
++
++    public void setVideoQuality(int quality, int orientation) {
++        CamcorderProfile profile = null;
++        if (CamcorderProfile.hasProfile(quality)) {
++            profile = CamcorderProfile.get(quality);
++        }
++        if (profile == null) {
++            // Select a quality  that is available on this device.
++            for (int level : FALLBACK_QUALITY_LEVELS) {
++                if (CamcorderProfile.hasProfile(level)) {
++                    profile = CamcorderProfile.get(level);
++                    break;
++                }
++            }
++        }
++        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
++            setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
++        } else {
++            setVideoSize(profile.videoFrameHeight, profile.videoFrameWidth);
++        }
++        setVideoCodec(profile.videoCodec);
++        setBitRate(profile.videoBitRate);
++        setFrameRate(profile.videoFrameRate);
++    }
++
++    public void setVideoCodec(int videoCodec) {
++        this.videoCodec = videoCodec;
++    }
++
++    public boolean isRecording() {
++        return recordingVideoFlag;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable-anydpi/ic_upload.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable-anydpi/ic_upload.xml	(date 1616707138944)
++++ app/src/main/res/drawable-anydpi/ic_upload.xml	(date 1616707138944)
+@@ -0,0 +1,11 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24"
++    android:viewportHeight="24"
++    android:tint="#333333"
++    android:alpha="0.6">
++  <path
++      android:fillColor="@android:color/white"
++      android:pathData="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2z"/>
++</vector>
