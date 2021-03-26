@@ -1,12 +1,18 @@
 package com.example.sem2projectar_interface2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,10 +26,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.annotations.NotNull;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     private static int RC_SIGN_IN = 100;
+    private  static  final  int PERMISSION_REQUEST_CODE = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signIn();
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    createDirectory("EnvisageProjects");
+                }
+                else
+                {
+
+                    askPermission();
+                }
 
             }
         });
@@ -96,6 +114,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void askPermission() {
+
+        ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+
+        if (requestCode == PERMISSION_REQUEST_CODE)
+        {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                createDirectory("EnvisageProjects");
+            }else
+            {
+                Toast.makeText(MainActivity.this,"Permission Denied",Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void createDirectory(String folderName) {
+
+        File file = new File(Environment.getExternalStorageDirectory(),folderName);
+
+        if (!file.exists()){
+
+            file.mkdir();
+
+            Toast.makeText(MainActivity.this,"Successful",Toast.LENGTH_SHORT).show();
+        }else
+        {
+
+            Toast.makeText(MainActivity.this,"Folder Already Exists",Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+    }
 
 }
 

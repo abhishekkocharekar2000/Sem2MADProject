@@ -32,7 +32,7 @@ public class AccountFragment extends Fragment {
     private AccountViewModel accountViewModel;
     private GoogleSignInClient mGoogleSignInClient;
     Button logoutButton, deleteAccountButton;
-    TextView name, id, email;
+    TextView name, email;
     ImageView display;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

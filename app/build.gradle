@@ -36,7 +36,8 @@ dependencies {
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
     implementation 'com.google.ar.sceneform:core:1.17.1'
     implementation "com.android.support:support-fragment:30.0.0"
-    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-database'
+    implementation platform('com.google.firebase:firebase-bom:26.7.0')
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -46,7 +47,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.4'
     implementation 'androidx.navigation:navigation-ui:2.3.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'com.google.firebase:firebase-storage:19.2.1'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
+    implementation 'com.google.firebase:firebase-database:19.7.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -58,6 +60,8 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
 
 }
+
+apply plugin: 'com.google.gms.google-services'
 
 sceneform.asset('sampledata/bedwithsidetables.obj',
         'default',
