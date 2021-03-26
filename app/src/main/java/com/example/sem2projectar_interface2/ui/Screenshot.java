@@ -10,12 +10,10 @@ import android.view.Surface;
 import com.google.ar.sceneform.SceneView;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-/**
- * Video Recorder class handles recording the contents of a SceneView. It uses MediaRecorder to
- * encode the video. The quality settings can be set explicitly or simply use the CamcorderProfile
- * class to select a predefined set of parameters.
- */
 public class Screenshot {
     private static final String TAG = "VideoRecorder";
     private static final int DEFAULT_BITRATE = 10000000;
@@ -70,22 +68,22 @@ public class Screenshot {
      *
      * @return true if recording is now active.
      */
-    public boolean onToggleRecord() {
+    public boolean onToggleRecord(String pn) {
         if (recordingVideoFlag) {
             stopRecordingVideo();
         } else {
-            startRecordingVideo();
+            startRecordingVideo(pn);
         }
         return recordingVideoFlag;
     }
 
-    private void startRecordingVideo() {
+    private void startRecordingVideo(String pn) {
         if (mediaRecorder == null) {
             mediaRecorder = new MediaRecorder();
         }
 
         try {
-            buildFilename();
+            buildFilename(pn);
             setUpMediaRecorder();
         } catch (IOException e) {
             Log.e(TAG, "Exception setting up recorder", e);
@@ -101,11 +99,12 @@ public class Screenshot {
         recordingVideoFlag = true;
     }
 
-    private void buildFilename() {
+    private void buildFilename(String pn) {
+        String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         if (videoDirectory == null) {
             videoDirectory =
                     new File(
-                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/MAD_PROJECT_AR");
+                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/EnvisageProjects/" + pn.concat(date));
         }
         if (videoBaseName == null || videoBaseName.isEmpty()) {
             videoBaseName = "Sample";

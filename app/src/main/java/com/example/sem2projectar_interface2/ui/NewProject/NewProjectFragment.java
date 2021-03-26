@@ -32,12 +32,6 @@ import com.example.sem2projectar_interface2.ui.Screenshot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -61,6 +55,7 @@ import static android.os.Environment.getStorageDirectory;
 
 public class NewProjectFragment extends Fragment {
 
+    public static final String EXTRA_TEXT= "com.example.artesting.EXTRA_TEXT";
     private NewProjectViewModel galleryViewModel;
     private Button b;
     public EditText projectName,  clientName, location;
@@ -79,17 +74,15 @@ public class NewProjectFragment extends Fragment {
         projectName = root.findViewById(R.id.newprojname);
         clientName = root.findViewById(R.id.newprojclientname);
         location = root.findViewById(R.id.newprojlocation);
-        projectname = projectName.getText().toString();
-        clientsname = clientName.getText().toString();
-        locationname = location.getText().toString();
-        date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
         fileName = projectname+date;
-        Intent intent = new Intent(getActivity(), Screenshot.class);
-        intent.putExtra("PROJECT_NAME", projectname);
-        startActivity(intent);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                projectname = projectName.getText().toString();
+                clientsname = clientName.getText().toString();
+                locationname = location.getText().toString();
+                date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 if (projectname.isEmpty() || clientsname.isEmpty() || locationname.isEmpty()){
                     Toast.makeText(getActivity(), "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }
@@ -106,6 +99,7 @@ public class NewProjectFragment extends Fragment {
                     }
 
                     Intent i = new Intent(getActivity(), CameraActivity.class);
+                    i.putExtra(EXTRA_TEXT, projectname);
                     startActivity(i);
 
 
@@ -153,7 +147,7 @@ public class NewProjectFragment extends Fragment {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         if (requestCode == PERMISSION_REQUEST_CODE)
         {

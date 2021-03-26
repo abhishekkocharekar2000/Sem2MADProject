@@ -19,6 +19,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sem2projectar_interface2.ui.NewProject.NewProjectFragment;
 import com.example.sem2projectar_interface2.ui.Screenshot;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.Anchor;
@@ -67,7 +68,7 @@ public class CameraActivity extends AppCompatActivity {
 
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
         Intent proname = getIntent();
-        String projectName = proname.getStringExtra("PROJECT_NAME");
+        String projectName = proname.getStringExtra(NewProjectFragment.EXTRA_TEXT);
 
         Intent i = getIntent();
         String t = i.getStringExtra(BrowseModels.EXTRA_TEXT);
@@ -85,7 +86,7 @@ public class CameraActivity extends AppCompatActivity {
                 s.setVideoQuality(CamcorderProfile.QUALITY_HIGH, orientation);
             }
 
-            boolean isRecording = s.onToggleRecord();
+            boolean isRecording = s.onToggleRecord(projectName);
 
             if(isRecording)
                 Toast.makeText(CameraActivity.this, "Started Recording", Toast.LENGTH_SHORT).show();
