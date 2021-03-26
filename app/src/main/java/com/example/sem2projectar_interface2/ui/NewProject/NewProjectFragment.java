@@ -28,6 +28,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.sem2projectar_interface2.CameraActivity;
 import com.example.sem2projectar_interface2.Main2Activity;
 import com.example.sem2projectar_interface2.R;
+import com.example.sem2projectar_interface2.ui.Screenshot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -66,6 +67,7 @@ public class NewProjectFragment extends Fragment {
     public String projectname, clientsname, locationname, date, fileName;
     private FileOutputStream fileOutputStream;
     private  static  final  int PERMISSION_REQUEST_CODE = 7;
+
     //private DatabaseReference projectNames;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,13 +84,12 @@ public class NewProjectFragment extends Fragment {
         locationname = location.getText().toString();
         date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         fileName = projectname+date;
+        Intent intent = new Intent(getActivity(), Screenshot.class);
+        intent.putExtra("PROJECT_NAME", projectname);
+        startActivity(intent);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                projectname = projectName.getText().toString();
-                clientsname = clientName.getText().toString();
-                locationname = location.getText().toString();
-                date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 if (projectname.isEmpty() || clientsname.isEmpty() || locationname.isEmpty()){
                     Toast.makeText(getActivity(), "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }

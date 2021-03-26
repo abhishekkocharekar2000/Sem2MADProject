@@ -105,8 +105,7 @@ public class Screenshot {
         if (videoDirectory == null) {
             videoDirectory =
                     new File(
-                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                                    + "/MAD_PROJECT_AR");
+                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/MAD_PROJECT_AR");
         }
         if (videoBaseName == null || videoBaseName.isEmpty()) {
             videoBaseName = "Sample";

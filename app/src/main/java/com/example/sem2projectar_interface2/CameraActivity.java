@@ -66,6 +66,8 @@ public class CameraActivity extends AppCompatActivity {
         f = findViewById(R.id.floatingActionButton);
 
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        Intent proname = getIntent();
+        String projectName = proname.getStringExtra("PROJECT_NAME");
 
         Intent i = getIntent();
         String t = i.getStringExtra(BrowseModels.EXTRA_TEXT);
