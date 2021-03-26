@@ -115,7 +115,7 @@ public class NewProjectFragment extends Fragment {
         String proname = "Project Name - ".concat(projectname);
         String cliname = "Client Name - ".concat(clientsname);
         String locname = "Location - ".concat(locationname);
-        File projectDetails = new File(Environment.getExternalStorageDirectory(),filename);
+        File projectDetails = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + filename);
         FileOutputStream fos = null;
         try {
 
@@ -166,7 +166,8 @@ public class NewProjectFragment extends Fragment {
 
     private void createDirectory(String folderName) {
 
-        File file = new File(Environment.getExternalStorageDirectory(),folderName);
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + folderName);
+
 
         if (!file.exists()){
 

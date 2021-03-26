@@ -74,7 +74,6 @@ public class CameraActivity extends AppCompatActivity {
         String t = i.getStringExtra(BrowseModels.EXTRA_TEXT);
 
         //verifyStoragePermission(this);
-        Toast.makeText(CameraActivity.this, "Started Recording", Toast.LENGTH_SHORT).show();
 
         f.setOnClickListener(view -> {
             if(s == null){

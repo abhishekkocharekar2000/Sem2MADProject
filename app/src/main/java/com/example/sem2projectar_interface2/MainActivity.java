@@ -139,21 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void createDirectory(String folderName) {
 
-        File file = new File(Environment.getExternalStorageDirectory(),folderName);
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/EnvisageProjects/");
 
         if (!file.exists()){
 
             file.mkdir();
-
-            Toast.makeText(MainActivity.this,"Successful",Toast.LENGTH_SHORT).show();
-        }else
-        {
-
-            Toast.makeText(MainActivity.this,"Folder Already Exists",Toast.LENGTH_SHORT).show();
-
-
         }
-
 
     }
 
