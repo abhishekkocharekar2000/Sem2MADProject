@@ -18,10 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 public class UploadFragment extends Fragment {
 
     private UploadViewModel uploadViewModel;
-    private GoogleSignInClient mGoogleSignInClient;
-    Button logoutButton, deleteAccountButton;
-    TextView name, id, email;
-    ImageView display;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         uploadViewModel = ViewModelProviders.of(this).get(UploadViewModel.class);

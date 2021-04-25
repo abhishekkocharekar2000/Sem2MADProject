@@ -32,6 +32,8 @@ import com.example.sem2projectar_interface2.ui.Screenshot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -62,6 +64,8 @@ public class NewProjectFragment extends Fragment {
     public String projectname, clientsname, locationname, date, fileName;
     private FileOutputStream fileOutputStream;
     private  static  final  int PERMISSION_REQUEST_CODE = 7;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference root2;
 
     //private DatabaseReference projectNames;
 
@@ -82,28 +86,27 @@ public class NewProjectFragment extends Fragment {
                 projectname = projectName.getText().toString();
                 clientsname = clientName.getText().toString();
                 locationname = location.getText().toString();
-                date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                if (projectname.isEmpty() || clientsname.isEmpty() || locationname.isEmpty()){
-                    Toast.makeText(getActivity(), "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                        createDirectory("/EnvisageProjects/"+projectname.concat(date));
-                        try {
-                            save("/EnvisageProjects/"+projectname.concat(date)+"/Project Details.txt");
-                            Toast.makeText(getActivity(), "Details Saved", Toast.LENGTH_LONG).show();
-                        } catch (Exception e) { }
-                    }else
-                    {
-                        askPermission();
+
+                root2 = db.getReference().child("Projects").child(projectname);
+
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put("Project_Name",projectname);
+
+                hashMap.put("Client Name",clientsname);
+
+                hashMap.put("Location",locationname);
+
+                root2.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(getContext(),"Project Created!",Toast.LENGTH_SHORT).show();
                     }
+                });
 
-                    Intent i = new Intent(getActivity(), CameraActivity.class);
-                    i.putExtra(EXTRA_TEXT, projectname);
-                    startActivity(i);
-
-
-                }
+                Intent i = new Intent(getActivity(), CameraActivity.class);
+                i.putExtra(EXTRA_TEXT, projectname);
+                startActivity(i);
 
             }
         });
@@ -111,74 +114,4 @@ public class NewProjectFragment extends Fragment {
 
     }
 
-    public void save(String filename) {
-        String proname = "Project Name - ".concat(projectname);
-        String cliname = "Client Name - ".concat(clientsname);
-        String locname = "Location - ".concat(locationname);
-        File projectDetails = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + filename);
-        FileOutputStream fos = null;
-        try {
-
-            fos = new FileOutputStream(projectDetails);
-            fos.write(proname.getBytes());
-            fos.write("\n".getBytes());
-            fos.write(cliname.getBytes());
-            fos.write("\n".getBytes());
-            fos.write(locname.getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-
-    private void askPermission() {
-
-        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        if (requestCode == PERMISSION_REQUEST_CODE)
-        {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                createDirectory("/EnvisageProjects/"+projectname.concat(date));
-            }else
-            {
-                Toast.makeText(getActivity(),"Permission Denied",Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    private void createDirectory(String folderName) {
-
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + folderName);
-
-
-        if (!file.exists()){
-
-            file.mkdir();
-
-            Toast.makeText(getActivity(),"Successful",Toast.LENGTH_SHORT).show();
-        }else
-        {
-            Toast.makeText(getActivity(),"Folder Already Exists",Toast.LENGTH_SHORT).show();
-        }
-
-
-}
 }
