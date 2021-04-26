@@ -82,7 +82,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 int orientation = getResources().getConfiguration().orientation;
 
-                s.setVideoQuality(CamcorderProfile.QUALITY_480P, orientation);
+                s.setVideoQuality(CamcorderProfile.QUALITY_HIGH, orientation);
             }
 
             boolean isRecording = s.onToggleRecord(projectName);

@@ -7,7 +7,7 @@
     android:background="@drawable/bg2">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -28,7 +28,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
         android:id="@+id/textView10"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/cN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -51,10 +51,10 @@
         android:text="Firstname Lastname"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
@@ -62,7 +62,7 @@
         android:text="Mumbai"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/cN" />
 
     <Button
         android:id="@+id/button5"
