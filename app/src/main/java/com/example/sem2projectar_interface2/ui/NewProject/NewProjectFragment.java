@@ -29,6 +29,8 @@ import com.example.sem2projectar_interface2.CameraActivity;
 import com.example.sem2projectar_interface2.Main2Activity;
 import com.example.sem2projectar_interface2.R;
 import com.example.sem2projectar_interface2.ui.Screenshot;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -87,13 +89,15 @@ public class NewProjectFragment extends Fragment {
                 clientsname = clientName.getText().toString();
                 locationname = location.getText().toString();
 
-                root2 = db.getReference().child("Projects").child(projectname);
+                GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+                String personName = acct.getDisplayName();
+                root2 = db.getReference().child("Projects").child(personName).child(projectname);
 
                 HashMap<String, String> hashMap = new HashMap<>();
 
                 hashMap.put("Project_Name",projectname);
 
-                hashMap.put("Client Name",clientsname);
+                hashMap.put("Client_Name",clientsname);
 
                 hashMap.put("Location",locationname);
 

@@ -28,6 +28,8 @@ import com.example.sem2projectar_interface2.MyAdapter;
 import com.example.sem2projectar_interface2.OpenVideos;
 import com.example.sem2projectar_interface2.R;
 import com.example.sem2projectar_interface2.ui.Upload.UploadFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -46,8 +48,9 @@ public class OpenProjectFragment extends Fragment {
     private MyAdapter adapter;
     private ArrayList<GetProjectNames> list;
 
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference root2 = db.getReference().child("Projects");
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+
+    DatabaseReference root2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +61,11 @@ public class OpenProjectFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        String personName = acct.getDisplayName();
+
+        root2 = db.getReference().child("Projects").child(personName);
 
         list = new ArrayList<>();
         adapter = new MyAdapter(getContext(),list);
@@ -88,8 +96,13 @@ public class OpenProjectFragment extends Fragment {
                 String cName = list.get(position).getClient_Name();
                 String location = list.get(position).getLocation();
                 Bundle bundle = new Bundle();
+                bundle.putString("Project",pName);
+                bundle.putString("Client",cName);
+                bundle.putString("Location",location);
                 FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.nav_host_fragment,new UploadFragment(),null).addToBackStack(null).commit();
+                UploadFragment uf = new UploadFragment();
+                uf.setArguments(bundle);
+                fr.replace(R.id.nav_host_fragment,uf,null).addToBackStack(null).commit();
             }
         });
 
