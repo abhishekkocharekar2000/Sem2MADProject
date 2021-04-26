@@ -129,9 +129,4 @@ public class Main2Activity extends AppCompatActivity {
     //fragmentTransaction.add(R.id.)
     //.commit();
 
-
-    @Override
-    public void onBackPressed() {
-
-    }
 }

@@ -109,11 +109,10 @@ public class Screenshot {
     }
 
     private void buildFilename(String pn) {
-        String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         if (videoDirectory == null) {
             videoDirectory =
                     new File(
-                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/EnvisageProjects/" + pn.concat(date));
+                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/EnvisageProjects/" + pn);
         }
         if (videoBaseName == null || videoBaseName.isEmpty()) {
             videoBaseName = "Sample";

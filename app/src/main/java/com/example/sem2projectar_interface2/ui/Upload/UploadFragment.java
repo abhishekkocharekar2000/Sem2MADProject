@@ -1,6 +1,9 @@
 package com.example.sem2projectar_interface2.ui.Upload;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,7 @@ public class UploadFragment extends Fragment {
 
 
     TextView pName,cName,location;
+    Button b;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,10 +43,22 @@ public class UploadFragment extends Fragment {
         String p = bundle.getString("Project");
         String c = bundle.getString("Client");
         String l = bundle.getString("Location");
+        b = root.findViewById(R.id.button5);
         pName.setText(p);
         cName.setText(c);
         location.setText(l);
 
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String sPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                        + "/EnvisageProjects/" + p + "/";
+                Uri uri = Uri.parse(sPath);
+                Intent i = new Intent(Intent.ACTION_PICK);
+                i.setDataAndType(uri,"*/*");
+                startActivity(i);
+            }
+        });
 
         return root;
     }
