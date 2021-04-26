@@ -3,11 +3,20 @@ package com.example.sem2projectar_interface2.ui;
 import android.content.res.Configuration;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.ar.sceneform.SceneView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

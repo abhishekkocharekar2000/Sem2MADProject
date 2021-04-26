@@ -23,6 +23,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -59,6 +60,9 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -67,7 +71,7 @@ public class Main2Activity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery,
-                R.id.nav_tools,R.id.nav_send,R.id.nav_share)
+                R.id.nav_tools,R.id.nav_share,R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -103,7 +107,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
     }
 
 
@@ -121,6 +124,14 @@ public class Main2Activity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+    //fragmentTransaction.add(R.id.)
+    //.commit();
 
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

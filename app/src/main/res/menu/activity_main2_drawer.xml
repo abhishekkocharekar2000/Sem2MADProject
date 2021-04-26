@@ -16,10 +16,7 @@
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_folder_open_24"
             android:title="Open Project"/>
-        <item
-            android:id="@+id/nav_send"
-            android:icon="@drawable/ic_upload2"
-            android:title="Upload"/>
+
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_baseline_account_circle_24"

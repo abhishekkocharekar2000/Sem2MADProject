@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import com.example.sem2projectar_interface2.GetProjectNames;
 import com.example.sem2projectar_interface2.MyAdapter;
 import com.example.sem2projectar_interface2.OpenVideos;
 import com.example.sem2projectar_interface2.R;
+import com.example.sem2projectar_interface2.ui.Upload.UploadFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -82,10 +84,12 @@ public class OpenProjectFragment extends Fragment {
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent i = new Intent(getContext(), OpenVideos.class);
-                //i.putExtra(EXTRA_TEXT,name);
-                //i.putExtra(EXTRA_NUMBER,number);
-                startActivity(i);
+                String pName = list.get(position).getProject_Name();
+                String cName = list.get(position).getClient_Name();
+                String location = list.get(position).getLocation();
+                Bundle bundle = new Bundle();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.nav_host_fragment,new UploadFragment(),null).addToBackStack(null).commit();
             }
         });
 
