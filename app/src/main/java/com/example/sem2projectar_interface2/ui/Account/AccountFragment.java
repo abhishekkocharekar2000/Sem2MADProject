@@ -26,6 +26,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AccountFragment extends Fragment {
 
@@ -34,6 +36,10 @@ public class AccountFragment extends Fragment {
     Button logoutButton, deleteAccountButton;
     TextView name, email;
     ImageView display;
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+
+    DatabaseReference root2;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
@@ -58,6 +64,10 @@ public class AccountFragment extends Fragment {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+                                String personName = acct.getDisplayName();
+                                root2 = db.getReference().child("Projects").child(personName);
+                                root2.removeValue();
                                 revokeAccess();
                             }
                         })
@@ -73,6 +83,9 @@ public class AccountFragment extends Fragment {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 AlertDialog.Builder logoutBuild = new AlertDialog.Builder(getActivity());
 
                 logoutBuild.setMessage("Are you sure you want to logout?")

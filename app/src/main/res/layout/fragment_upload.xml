@@ -22,52 +22,52 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="#A1FFFFFF"
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="58dp"
         android:text="Client Name :"
-        android:textSize="24sp"
+        android:textColor="#A1FFFFFF"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
-        android:textColor="#A1FFFFFF"
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="58dp"
         android:text="Location :"
-        android:textSize="24sp"
+        android:textColor="#A1FFFFFF"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:textColor="#A1FFFFFF"
         android:id="@+id/cN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="58dp"
         android:text="Firstname Lastname"
-        android:textSize="24sp"
+        android:textColor="#A1FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
-        android:textColor="#A1FFFFFF"
         android:id="@+id/l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="58dp"
         android:text="Mumbai"
-        android:textSize="24sp"
+        android:textColor="#A1FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/cN" />
 
