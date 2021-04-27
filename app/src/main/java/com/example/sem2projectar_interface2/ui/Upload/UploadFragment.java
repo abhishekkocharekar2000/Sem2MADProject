@@ -51,10 +51,9 @@ public class UploadFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                        + "/EnvisageProjects/" + p + "/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                String sPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/EnvisageProjects/" + p + "/";
                 Uri uri = Uri.parse(sPath);
-                Intent i = new Intent(Intent.ACTION_PICK);
                 i.setDataAndType(uri,"*/*");
                 startActivity(i);
             }
