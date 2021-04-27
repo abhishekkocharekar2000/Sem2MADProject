@@ -7,10 +7,13 @@
     android:background="@drawable/bg2">
 
     <TextView
+        android:background="#5E000000"
+        android:textColor="#A1FFFFFF"
         android:id="@+id/pN"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:gravity="center"
         android:text="Project Title"
         android:textSize="58sp"
         android:textStyle="bold"
@@ -19,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="#A1FFFFFF"
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
+        android:textColor="#A1FFFFFF"
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:textColor="#A1FFFFFF"
         android:id="@+id/cN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pN" />
 
     <TextView
+        android:textColor="#A1FFFFFF"
         android:id="@+id/l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,5 +81,7 @@
         android:text="Show Videos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/Brown3"
+        android:textColor="@color/Grey"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
